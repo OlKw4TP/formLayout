@@ -10,9 +10,9 @@ from PySide2.QtWidgets import *
 app = QApplication(sys.argv)
 win = QWidget()
 win.setWindowTitle("Form Layout")
-win.setGeometry(100,100,700,400)
+win.setGeometry(100,100,700,200)
 
-mLayout = QVBoxLayout()
+mLayout = QHBoxLayout()
 
 ##left section
 left = QVBoxLayout()
@@ -34,12 +34,20 @@ left.addWidget(scroll)
 
 ##center section
 center = QFormLayout()
-center.addRow("Podaj nazwisko: ",QTextEdit())
-center.addRow("Podaj hasło: ",QTextEdit())
+e1 = QTextEdit()
+e1.setFixedSize(200,30)
+e2 = QTextEdit()
+e2.setFixedSize(200,30)
+center.addRow("Podaj nazwisko: ",e1)
+center.addRow("Podaj hasło: ",e2)
 
+##right section
+right = QVBoxLayout()
+right.addWidget(QPushButton("DALEJ"))
 
 mLayout.addLayout(left)
 mLayout.addLayout(center)
+mLayout.addLayout(right)
 win.setLayout(mLayout)
 win.show();
 sys.exit(app.exec_())
